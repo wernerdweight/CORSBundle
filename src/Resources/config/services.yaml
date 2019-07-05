@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    WernerDweight\CORSBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Event,Exception}'

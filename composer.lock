@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e6eb2180e15d356465ed919e5963faf",
+    "content-hash": "cc111aa27c144a46defc5e22283065a7",
     "packages": [
         {
             "name": "psr/cache",
@@ -1649,6 +1649,54 @@
             ],
             "description": "PHP core functions that throw exceptions instead of returning FALSE on error",
             "time": "2019-06-25T08:45:33+00:00"
+        },
+        {
+            "name": "wernerdweight/ra",
+            "version": "v0.3.3",
+            "target-dir": "WernerDweight/RA",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wernerdweight/RA.git",
+                "reference": "e24e8b4fc4603822ab69cc023d5686c466ddb817"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wernerdweight/RA/zipball/e24e8b4fc4603822ab69cc023d5686c466ddb817",
+                "reference": "e24e8b4fc4603822ab69cc023d5686c466ddb817",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "thecodingmachine/safe": "^0.1.13"
+            },
+            "require-dev": {
+                "thecodingmachine/phpstan-safe-rule": "^0.1.3",
+                "wernerdweight/cs": "^1.2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "WernerDweight\\RA\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Werner Dweight Solutions",
+                    "email": "info@wds.blue"
+                }
+            ],
+            "description": "PHP Array object with consistent and predictable API",
+            "homepage": "https://github.com/wernerdweight/RA",
+            "keywords": [
+                "array",
+                "iterable",
+                "object"
+            ],
+            "time": "2019-06-17T12:20:46+00:00"
         }
     ],
     "packages-dev": [

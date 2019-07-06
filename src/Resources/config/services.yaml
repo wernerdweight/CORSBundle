@@ -7,3 +7,11 @@ services:
     WernerDweight\CORSBundle\:
         resource: '../../*'
         exclude: '../../{DependencyInjection,Event,Exception}'
+
+    WernerDweight\CORSBundle\Service\ConfigurationProvider:
+        arguments:
+            $allowCredentials: '%cors.access_control.allow_credentials%'
+            $allowOrigin: '%cors.access_control.allow_origin%'
+            $allowHeaders: '%cors.access_control.allow_headers%'
+            $exposeHeaders: '%cors.access_control.expose_headers%'
+            $targetControllers: '%cors.target_controllers%'

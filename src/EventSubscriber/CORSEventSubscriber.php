@@ -9,21 +9,27 @@ use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use WernerDweight\CORSBundle\Controller\CORSControllerInterface;
+use WernerDweight\CORSBundle\Service\ConfigurationProvider;
 use WernerDweight\CORSBundle\Service\CORSResolver;
+use WernerDweight\CORSBundle\Service\TargetControllerResolver;
 
 final class CORSEventSubscriber implements EventSubscriberInterface
 {
     /** @var CORSResolver */
     private $resolver;
 
+    /** @var TargetControllerResolver */
+    private $targetControllerResolver;
+
     /**
-     * CORSSubscriber constructor.
-     *
+     * CORSEventSubscriber constructor.
      * @param CORSResolver $resolver
+     * @param TargetControllerResolver $targetControllerResolver
      */
-    public function __construct(CORSResolver $resolver)
+    public function __construct(CORSResolver $resolver, TargetControllerResolver $targetControllerResolver)
     {
         $this->resolver = $resolver;
+        $this->targetControllerResolver = $targetControllerResolver;
     }
 
     /**
@@ -32,8 +38,7 @@ final class CORSEventSubscriber implements EventSubscriberInterface
     public function resolveRequest(ControllerEvent $event): void
     {
         $controller = $event->getController();
-        // TOOD: allow configurable interfaces/classes
-        if ($controller instanceof CORSControllerInterface) {
+        if (true === $this->targetControllerResolver->isTargeted($controller)) {
             $this->resolver->resolve($event->getRequest());
         }
     }

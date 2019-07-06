@@ -9,20 +9,21 @@ class ConfigurationProvider
     private $allowCredentials;
 
     /** @var array */
-    private $allowOrigin;
+    private $allowOrigin = [];
 
     /** @var array */
-    private $allowHeaders;
+    private $allowHeaders = [];
 
     /** @var array */
-    private $exposeHeaders;
+    private $exposeHeaders = [];
 
     /** @var array */
-    private $targetControllers;
+    private $targetControllers = [];
 
     /**
      * ConfigurationProvider constructor.
-     * @param bool $allowCredentials
+     *
+     * @param bool  $allowCredentials
      * @param array $allowOrigin
      * @param array $allowHeaders
      * @param array $exposeHeaders

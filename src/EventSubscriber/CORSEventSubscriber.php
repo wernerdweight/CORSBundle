@@ -8,8 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use WernerDweight\CORSBundle\Controller\CORSControllerInterface;
-use WernerDweight\CORSBundle\Service\ConfigurationProvider;
 use WernerDweight\CORSBundle\Service\CORSResolver;
 use WernerDweight\CORSBundle\Service\TargetControllerResolver;
 
@@ -23,7 +21,8 @@ final class CORSEventSubscriber implements EventSubscriberInterface
 
     /**
      * CORSEventSubscriber constructor.
-     * @param CORSResolver $resolver
+     *
+     * @param CORSResolver             $resolver
      * @param TargetControllerResolver $targetControllerResolver
      */
     public function __construct(CORSResolver $resolver, TargetControllerResolver $targetControllerResolver)

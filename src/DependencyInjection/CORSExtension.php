@@ -21,6 +21,27 @@ class CORSExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter(
+            'cors.access_control.allow_credentials',
+            $config['access_control']['allow_credentials'] ?? []
+        );
+        $container->setParameter(
+            'cors.access_control.allow_origin',
+            $config['access_control']['allow_origin'] ?? []
+        );
+        $container->setParameter(
+            'cors.access_control.allow_headers',
+            $config['access_control']['allow_headers'] ?? []
+        );
+        $container->setParameter(
+            'cors.access_control.expose_headers',
+            $config['access_control']['expose_headers'] ?? []
+        );
+        $container->setParameter(
+            'cors.target_controllers',
+            $config['target_controllers'] ?? []
+        );
+
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
     }

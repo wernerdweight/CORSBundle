@@ -31,6 +31,7 @@ final class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('access_control')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('allow_credentials')
                             ->defaultFalse()

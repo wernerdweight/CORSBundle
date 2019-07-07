@@ -28,7 +28,9 @@ final class PreflightRequestInterceptedEventSubscriber implements EventSubscribe
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::EXCEPTION => 'interceptException',
+            KernelEvents::EXCEPTION => [
+                ['interceptException', 2]
+            ],
         ];
     }
 }

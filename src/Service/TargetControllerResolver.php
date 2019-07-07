@@ -34,7 +34,7 @@ class TargetControllerResolver
     private function getConfiguration(): RA
     {
         if (null === $this->configuration) {
-            $this->configuration = new RA($this->configurationProvider->getTargetControllers());
+            $this->configuration = $this->configurationProvider->getTargetControllers();
         }
         return $this->configuration;
     }

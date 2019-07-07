@@ -3,22 +3,24 @@ declare(strict_types=1);
 
 namespace WernerDweight\CORSBundle\Service;
 
+use WernerDweight\RA\RA;
+
 class ConfigurationProvider
 {
     /** @var bool */
     private $allowCredentials;
 
-    /** @var array */
-    private $allowOrigin = [];
+    /** @var RA */
+    private $allowOrigin;
 
-    /** @var array */
-    private $allowHeaders = [];
+    /** @var RA */
+    private $allowHeaders;
 
-    /** @var array */
-    private $exposeHeaders = [];
+    /** @var RA */
+    private $exposeHeaders;
 
-    /** @var array */
-    private $targetControllers = [];
+    /** @var RA */
+    private $targetControllers;
 
     /**
      * ConfigurationProvider constructor.
@@ -37,10 +39,10 @@ class ConfigurationProvider
         array $targetControllers
     ) {
         $this->allowCredentials = $allowCredentials;
-        $this->allowOrigin = $allowOrigin;
-        $this->allowHeaders = $allowHeaders;
-        $this->exposeHeaders = $exposeHeaders;
-        $this->targetControllers = $targetControllers;
+        $this->allowOrigin = new RA($allowOrigin);
+        $this->allowHeaders = new RA($allowHeaders);
+        $this->exposeHeaders = new RA($exposeHeaders);
+        $this->targetControllers = new RA($targetControllers);
     }
 
     /**
@@ -52,33 +54,33 @@ class ConfigurationProvider
     }
 
     /**
-     * @return array
+     * @return RA
      */
-    public function getAllowOrigin(): array
+    public function getAllowOrigin(): RA
     {
         return $this->allowOrigin;
     }
 
     /**
-     * @return array
+     * @return RA
      */
-    public function getAllowHeaders(): array
+    public function getAllowHeaders(): RA
     {
         return $this->allowHeaders;
     }
 
     /**
-     * @return array
+     * @return RA
      */
-    public function getExposeHeaders(): array
+    public function getExposeHeaders(): RA
     {
         return $this->exposeHeaders;
     }
 
     /**
-     * @return array
+     * @return RA
      */
-    public function getTargetControllers(): array
+    public function getTargetControllers(): RA
     {
         return $this->targetControllers;
     }

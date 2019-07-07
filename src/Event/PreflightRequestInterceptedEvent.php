@@ -6,7 +6,6 @@ namespace WernerDweight\CORSBundle\Event;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\Event;
-use WernerDweight\DoctrineCrudApiBundle\Entity\ApiEntityInterface;
 
 class PreflightRequestInterceptedEvent extends Event
 {
@@ -21,7 +20,8 @@ class PreflightRequestInterceptedEvent extends Event
 
     /**
      * PreflightRequestInterceptedEvent constructor.
-     * @param Request $request
+     *
+     * @param Request  $request
      * @param Response $response
      */
     public function __construct(Request $request, Response $response)
@@ -48,6 +48,7 @@ class PreflightRequestInterceptedEvent extends Event
 
     /**
      * @param Response $response
+     *
      * @return PreflightRequestInterceptedEvent
      */
     public function setResponse(Response $response): self

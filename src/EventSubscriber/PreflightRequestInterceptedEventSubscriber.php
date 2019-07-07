@@ -29,7 +29,7 @@ final class PreflightRequestInterceptedEventSubscriber implements EventSubscribe
     {
         return [
             KernelEvents::EXCEPTION => [
-                ['interceptException', 2]
+                ['interceptException', 2],
             ],
         ];
     }

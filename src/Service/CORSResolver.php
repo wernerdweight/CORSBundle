@@ -41,9 +41,10 @@ class CORSResolver
 
     /**
      * CORSResolver constructor.
+     *
      * @param ConfigurationProvider $configurationProvider
      * @param RoutingHeaderResolver $routingHeaderResolver
-     * @param EventDispatcher $eventDispatcher
+     * @param EventDispatcher       $eventDispatcher
      */
     public function __construct(
         ConfigurationProvider $configurationProvider,
@@ -95,7 +96,7 @@ class CORSResolver
         }
 
         $allowMethods = $this->routingHeaderResolver->resolveAllowedMethods($request);
-        if (null !== $allowHeaders) {
+        if (null !== $allowMethods) {
             $headers[self::HEADER_ALLOW_METHODS] = $allowMethods->join(self::HEADER_VALUE_SEPARATOR);
         }
 

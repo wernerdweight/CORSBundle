@@ -3,11 +3,8 @@ declare(strict_types=1);
 
 namespace WernerDweight\CORSBundle\Service;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
-use WernerDweight\CORSBundle\Exception\PreflightRequestInterceptedException;
 use WernerDweight\RA\RA;
 
 class RoutingHeaderResolver
@@ -22,6 +19,7 @@ class RoutingHeaderResolver
 
     /**
      * RoutingHeaderResolver constructor.
+     *
      * @param RouterInterface $router
      */
     public function __construct(RouterInterface $router)
@@ -31,6 +29,7 @@ class RoutingHeaderResolver
 
     /**
      * @param Request $request
+     *
      * @return RA|null
      */
     public function resolveAllowedMethods(Request $request): ?RA
@@ -46,7 +45,7 @@ class RoutingHeaderResolver
         }
 
         $methods = new RA($route->getMethods());
-        if ($methods->length() === 0) {
+        if (0 === $methods->length()) {
             return new RA([self::ANY_METHOD]);
         }
 

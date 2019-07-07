@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WernerDweight\CORSBundle\Service;
 
+use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use WernerDweight\CORSBundle\Controller\CORSControllerInterface;
 use WernerDweight\RA\RA;
 
@@ -39,11 +40,11 @@ class TargetControllerResolver
     }
 
     /**
-     * @param callable $controller
+     * @param ServiceSubscriberInterface $controller
      *
      * @return bool
      */
-    public function isTargeted(callable $controller): bool
+    public function isTargeted(ServiceSubscriberInterface $controller): bool
     {
         $configuration = $this->getConfiguration();
 

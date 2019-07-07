@@ -6,13 +6,17 @@ namespace WernerDweight\CORSBundle\EventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use WernerDweight\CORSBundle\Service\CORSResolver;
 use WernerDweight\CORSBundle\Service\TargetControllerResolver;
 
 final class CORSEventSubscriber implements EventSubscriberInterface
 {
+    /** @var bool */
+    private $shouldBeEnhanced = false;
+
     /** @var CORSResolver */
     private $resolver;
 
@@ -33,28 +37,47 @@ final class CORSEventSubscriber implements EventSubscriberInterface
 
     /**
      * @param ControllerEvent $event
+     *
+     * @return ServiceSubscriberInterface
+     */
+    private function getControllerFromEvent(ControllerEvent $event): ServiceSubscriberInterface
+    {
+        $controller = $event->getController();
+        if (true === is_array($controller)) {
+            $controller = $controller[0];
+        }
+        return $controller;
+    }
+
+    /**
+     * @param ControllerEvent $event
      */
     public function resolveRequest(ControllerEvent $event): void
     {
-        $controller = $event->getController();
+        $controller = $this->getControllerFromEvent($event);
         if (true === $this->targetControllerResolver->isTargeted($controller)) {
-            $this->resolver->resolve($event->getRequest());
+            $request = $event->getRequest();
+            if (Request::METHOD_OPTIONS !== $request->getMethod()) {
+                // only intercept OPTIONS calls, only enhance other calls
+                $this->shouldBeEnhanced = true;
+                return;
+            }
+
+            $this->resolver->resolve($request);
         }
     }
 
     /**
-     * @param FilterResponseEvent $event
+     * @param ResponseEvent $event
      */
-    public function enhanceResponse(FilterResponseEvent $event): void
+    public function enhanceResponse(ResponseEvent $event): void
     {
-        $request = $event->getRequest();
-        if (Request::METHOD_OPTIONS === $request->getMethod()) {
-            // already handled by CORSResolver
+        if (true !== $this->shouldBeEnhanced) {
             return;
         }
 
         $event->getResponse()->headers->add(
-            $this->resolver->getHeaders($request)
+            $this->resolver->getHeaders($event->getRequest())
         );
     }
 

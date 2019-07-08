@@ -11,16 +11,17 @@ class GetResponseHeadersEvent extends Event
     /** @var string */
     public const NAME = 'wds.cors_bundle.get_response_headers';
 
+    /** @var array */
+    private $headers = [];
+
     /** @var Request */
     private $request;
 
-    /** @var array */
-    private $headers;
-
     /**
      * GetResponseHeadersEvent constructor.
+     *
      * @param Request $request
-     * @param array $headers
+     * @param array   $headers
      */
     public function __construct(Request $request, array $headers)
     {

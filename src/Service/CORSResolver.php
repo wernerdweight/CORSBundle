@@ -8,6 +8,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use WernerDweight\CORSBundle\Event\GetResponseHeadersEvent;
 use WernerDweight\CORSBundle\Event\PreflightRequestInterceptedEvent;
 use WernerDweight\CORSBundle\Exception\PreflightRequestInterceptedException;
 
@@ -100,8 +101,8 @@ class CORSResolver
             $headers[self::HEADER_ALLOW_METHODS] = $allowMethods->join(self::HEADER_VALUE_SEPARATOR);
         }
 
-        // TODO: create event to allow developers to add some arbitrary headers
-
-        return $headers;
+        /** @var GetResponseHeadersEvent $event */
+        $event = $this->eventDispatcher->dispatch(new GetResponseHeadersEvent($request, $headers));
+        return $event->getHeaders();
     }
 }

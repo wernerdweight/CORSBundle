@@ -23,7 +23,7 @@ class CORSExtension extends Extension
 
         $container->setParameter(
             'cors.access_control.allow_credentials',
-            $config['access_control']['allow_credentials'] ?? []
+            $config['access_control']['allow_credentials'] ?? false
         );
         $container->setParameter(
             'cors.access_control.allow_origin',

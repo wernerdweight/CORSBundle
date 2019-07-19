@@ -14,9 +14,9 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('cors');
         /** @var ArrayNodeDefinition $rootNode */
-        $rootNode = $treeBuilder->root('cors');
+        $rootNode = $treeBuilder->getRootNode();
 
         $this->addConfiguration($rootNode);
 

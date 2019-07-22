@@ -33,6 +33,7 @@ class TestKernel extends Kernel
      */
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
+        $routes->import(__DIR__ . '/Resources/config/routes.yaml');
     }
 
     /**
@@ -43,6 +44,7 @@ class TestKernel extends Kernel
     {
         $loader->load(__DIR__ . '/../vendor/symfony/framework-bundle/Resources/config/test.xml');
         $loader->load(__DIR__ . '/../src/Resources/config/services.yaml');
+
         $builder->loadFromExtension('framework', [
             'secret' => 'not-so-secret',
             'test' => true,

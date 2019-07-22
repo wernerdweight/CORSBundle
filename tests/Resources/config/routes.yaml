@@ -1,0 +1,9 @@
+test_get:
+    path:     /test/get
+    methods:  [ OPTIONS, GET ]
+    controller: WernerDweight\CORSBundle\Tests\Controller\TestController::get
+
+test_post:
+    path:     /test/post
+    methods:  [ OPTIONS, POST ]
+    controller: WernerDweight\CORSBundle\Tests\Controller\TestController::post

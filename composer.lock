@@ -1793,17 +1793,17 @@
         },
         {
             "name": "wernerdweight/ra",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "target-dir": "WernerDweight/RA",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wernerdweight/RA.git",
-                "reference": "0040dedb4a0feab9d96639ffe20cb1f7691aa7bd"
+                "reference": "432024d7ea6e11027d4b0e441547fa8664ea3732"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wernerdweight/RA/zipball/0040dedb4a0feab9d96639ffe20cb1f7691aa7bd",
-                "reference": "0040dedb4a0feab9d96639ffe20cb1f7691aa7bd",
+                "url": "https://api.github.com/repos/wernerdweight/RA/zipball/432024d7ea6e11027d4b0e441547fa8664ea3732",
+                "reference": "432024d7ea6e11027d4b0e441547fa8664ea3732",
                 "shasum": ""
             },
             "require": {
@@ -1837,7 +1837,7 @@
                 "iterable",
                 "object"
             ],
-            "time": "2019-07-19T16:13:30+00:00"
+            "time": "2019-12-08T20:49:34+00:00"
         }
     ],
     "packages-dev": [

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use WernerDweight\CORSBundle\Event\GetResponseHeadersEvent;
 use WernerDweight\CORSBundle\Event\PreflightRequestInterceptedEvent;
 use WernerDweight\CORSBundle\Exception\PreflightRequestInterceptedException;
+use WernerDweight\RA\RA;
 
 class CORSResolver
 {
@@ -32,6 +33,8 @@ class CORSResolver
     private const TRUE_VALUE = 'true';
     /** @var string */
     private const HEADER_VALUE_SEPARATOR = ', ';
+    /** @var string */
+    private const ANY_ORIGIN = '*';
 
     /** @var ConfigurationProvider */
     private $configurationProvider;
@@ -71,6 +74,18 @@ class CORSResolver
     }
 
     /**
+     * @param RA          $allowOrigin
+     * @param string|null $origin
+     *
+     * @return bool
+     */
+    private function isOriginAllowed(RA $allowOrigin, ?string $origin): bool
+    {
+        return true === $allowOrigin->contains(self::ANY_ORIGIN) ||
+            (null !== $origin && true === $allowOrigin->contains($origin));
+    }
+
+    /**
      * @param Request $request
      *
      * @return array
@@ -86,8 +101,8 @@ class CORSResolver
         $allowOrigin = $this->configurationProvider->getAllowOrigin();
         if ($allowOrigin->length() > 0) {
             $origin = $request->headers->get(self::HEADER_ORIGIN);
-            if (null !== $origin && $allowOrigin->contains($origin)) {
-                $headers[self::HEADER_ALLOW_ORIGIN] = $origin;
+            if (true === $this->isOriginAllowed($allowOrigin, $origin)) {
+                $headers[self::HEADER_ALLOW_ORIGIN] = $origin ?: self::ANY_ORIGIN;
             }
         }
 

@@ -27,6 +27,8 @@ class CORSResolver
     /** @var string */
     private const HEADER_EXPOSE_HEADERS = 'Access-Control-Expose-Headers';
     /** @var string */
+    private const HEADER_ORIGIN = 'Origin';
+    /** @var string */
     private const TRUE_VALUE = 'true';
     /** @var string */
     private const HEADER_VALUE_SEPARATOR = ', ';
@@ -83,7 +85,10 @@ class CORSResolver
 
         $allowOrigin = $this->configurationProvider->getAllowOrigin();
         if ($allowOrigin->length() > 0) {
-            $headers[self::HEADER_ALLOW_ORIGIN] = $allowOrigin->join(self::HEADER_VALUE_SEPARATOR);
+            $origin = $request->headers->get(self::HEADER_ORIGIN);
+            if (null !== $origin && $allowOrigin->contains($origin)) {
+                $headers[self::HEADER_ALLOW_ORIGIN] = $origin;
+            }
         }
 
         $allowHeaders = $this->configurationProvider->getAllowHeaders();

@@ -26,7 +26,7 @@ class CORSResolverTest extends KernelTestCase
     }
 
     /**
-     * @param array   $expected
+     * @param mixed[] $expected
      * @param Request $request
      *
      * @dataProvider provideGetHeadersValues
@@ -43,7 +43,7 @@ class CORSResolverTest extends KernelTestCase
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function provideResolveValues(): array
     {
@@ -59,7 +59,7 @@ class CORSResolverTest extends KernelTestCase
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function provideGetHeadersValues(): array
     {

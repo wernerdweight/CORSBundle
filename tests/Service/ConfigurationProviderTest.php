@@ -60,7 +60,7 @@ class ConfigurationProviderTest extends TestCase
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function provideValues(): array
     {

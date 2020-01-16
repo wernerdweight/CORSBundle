@@ -28,7 +28,7 @@ class TargetControllerResolverTest extends KernelTestCase
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function provideValues(): array
     {

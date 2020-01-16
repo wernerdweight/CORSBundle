@@ -88,7 +88,7 @@ class CORSResolver
     /**
      * @param Request $request
      *
-     * @return array
+     * @return string[]
      */
     public function getHeaders(Request $request): array
     {

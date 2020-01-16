@@ -23,7 +23,7 @@ final class PreflightRequestInterceptedEventSubscriber implements EventSubscribe
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public static function getSubscribedEvents(): array
     {

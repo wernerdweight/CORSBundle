@@ -25,11 +25,11 @@ class ConfigurationProvider
     /**
      * ConfigurationProvider constructor.
      *
-     * @param bool  $allowCredentials
-     * @param array $allowOrigin
-     * @param array $allowHeaders
-     * @param array $exposeHeaders
-     * @param array $targetControllers
+     * @param bool     $allowCredentials
+     * @param string[] $allowOrigin
+     * @param string[] $allowHeaders
+     * @param string[] $exposeHeaders
+     * @param string[] $targetControllers
      */
     public function __construct(
         bool $allowCredentials,

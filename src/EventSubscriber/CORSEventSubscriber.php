@@ -82,7 +82,7 @@ final class CORSEventSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public static function getSubscribedEvents(): array
     {

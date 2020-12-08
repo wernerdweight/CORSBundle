@@ -10,8 +10,6 @@ use WernerDweight\RA\RA;
 class ConfigurationProviderTest extends TestCase
 {
     /**
-     * @param ConfigurationProvider $configurationProvider
-     *
      * @dataProvider provideValues
      */
     public function testGetAllowCredentials(ConfigurationProvider $configurationProvider): void
@@ -20,8 +18,6 @@ class ConfigurationProviderTest extends TestCase
     }
 
     /**
-     * @param ConfigurationProvider $configurationProvider
-     *
      * @dataProvider provideValues
      */
     public function testGetAllowOrigin(ConfigurationProvider $configurationProvider): void
@@ -30,8 +26,6 @@ class ConfigurationProviderTest extends TestCase
     }
 
     /**
-     * @param ConfigurationProvider $configurationProvider
-     *
      * @dataProvider provideValues
      */
     public function testGetAllowHeaders(ConfigurationProvider $configurationProvider): void
@@ -40,8 +34,6 @@ class ConfigurationProviderTest extends TestCase
     }
 
     /**
-     * @param ConfigurationProvider $configurationProvider
-     *
      * @dataProvider provideValues
      */
     public function testGetExposeHeaders(ConfigurationProvider $configurationProvider): void
@@ -50,8 +42,6 @@ class ConfigurationProviderTest extends TestCase
     }
 
     /**
-     * @param ConfigurationProvider $configurationProvider
-     *
      * @dataProvider provideValues
      */
     public function testGetTargetControllers(ConfigurationProvider $configurationProvider): void

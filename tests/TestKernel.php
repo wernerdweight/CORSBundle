@@ -28,18 +28,11 @@ class TestKernel extends Kernel
         ];
     }
 
-    /**
-     * @param RouteCollectionBuilder $routes
-     */
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
         $routes->import(__DIR__ . '/Resources/config/routes.yaml');
     }
 
-    /**
-     * @param ContainerBuilder $builder
-     * @param LoaderInterface  $loader
-     */
     protected function configureContainer(ContainerBuilder $builder, LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . '/../vendor/symfony/framework-bundle/Resources/config/test.xml');

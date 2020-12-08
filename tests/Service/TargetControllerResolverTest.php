@@ -11,9 +11,6 @@ use WernerDweight\CORSBundle\Tests\Fixtures\ControllerFixtures;
 class TargetControllerResolverTest extends KernelTestCase
 {
     /**
-     * @param bool                       $expected
-     * @param ServiceSubscriberInterface $controller
-     *
      * @dataProvider provideValues
      */
     public function testIsTargeted(

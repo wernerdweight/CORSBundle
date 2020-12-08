@@ -25,9 +25,6 @@ final class CORSEventSubscriber implements EventSubscriberInterface
 
     /**
      * CORSEventSubscriber constructor.
-     *
-     * @param CORSResolver             $resolver
-     * @param TargetControllerResolver $targetControllerResolver
      */
     public function __construct(CORSResolver $resolver, TargetControllerResolver $targetControllerResolver)
     {
@@ -35,11 +32,6 @@ final class CORSEventSubscriber implements EventSubscriberInterface
         $this->targetControllerResolver = $targetControllerResolver;
     }
 
-    /**
-     * @param ControllerEvent $event
-     *
-     * @return ServiceSubscriberInterface
-     */
     private function getControllerFromEvent(ControllerEvent $event): ServiceSubscriberInterface
     {
         $controller = $event->getController();
@@ -49,9 +41,6 @@ final class CORSEventSubscriber implements EventSubscriberInterface
         return $controller;
     }
 
-    /**
-     * @param ControllerEvent $event
-     */
     public function resolveRequest(ControllerEvent $event): void
     {
         $controller = $this->getControllerFromEvent($event);
@@ -67,9 +56,6 @@ final class CORSEventSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * @param ResponseEvent $event
-     */
     public function enhanceResponse(ResponseEvent $event): void
     {
         if (true !== $this->shouldBeEnhanced) {

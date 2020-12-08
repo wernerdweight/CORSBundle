@@ -9,9 +9,6 @@ use WernerDweight\CORSBundle\Tests\Helpers\TestTargetedControllerInterface;
 
 class ControllerFixtures
 {
-    /**
-     * @return ServiceSubscriberInterface
-     */
     public static function createCORSController(): ServiceSubscriberInterface
     {
         return new class() implements CORSControllerInterface, ServiceSubscriberInterface {
@@ -25,9 +22,6 @@ class ControllerFixtures
         };
     }
 
-    /**
-     * @return ServiceSubscriberInterface
-     */
     public static function createTargetedController(): ServiceSubscriberInterface
     {
         return new class() implements TestTargetedControllerInterface {
@@ -41,9 +35,6 @@ class ControllerFixtures
         };
     }
 
-    /**
-     * @return ServiceSubscriberInterface
-     */
     public static function createNotTargetedController(): ServiceSubscriberInterface
     {
         return new class() implements ServiceSubscriberInterface {

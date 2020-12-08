@@ -20,7 +20,6 @@ class GetResponseHeadersEvent extends Event
     /**
      * GetResponseHeadersEvent constructor.
      *
-     * @param Request  $request
      * @param string[] $headers
      */
     public function __construct(Request $request, array $headers)
@@ -29,9 +28,6 @@ class GetResponseHeadersEvent extends Event
         $this->headers = $headers;
     }
 
-    /**
-     * @return Request
-     */
     public function getRequest(): Request
     {
         return $this->request;

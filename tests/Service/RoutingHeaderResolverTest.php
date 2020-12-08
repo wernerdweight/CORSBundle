@@ -12,9 +12,6 @@ use WernerDweight\RA\RA;
 class RoutingHeaderResolverTest extends KernelTestCase
 {
     /**
-     * @param RA|null $expected
-     * @param Request $request
-     *
      * @dataProvider provideValues
      */
     public function testResolveAllowedMethods(

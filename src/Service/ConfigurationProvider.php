@@ -25,7 +25,6 @@ class ConfigurationProvider
     /**
      * ConfigurationProvider constructor.
      *
-     * @param bool     $allowCredentials
      * @param string[] $allowOrigin
      * @param string[] $allowHeaders
      * @param string[] $exposeHeaders
@@ -45,41 +44,26 @@ class ConfigurationProvider
         $this->targetControllers = new RA($targetControllers);
     }
 
-    /**
-     * @return bool
-     */
     public function getAllowCredentials(): bool
     {
         return $this->allowCredentials;
     }
 
-    /**
-     * @return RA
-     */
     public function getAllowOrigin(): RA
     {
         return $this->allowOrigin;
     }
 
-    /**
-     * @return RA
-     */
     public function getAllowHeaders(): RA
     {
         return $this->allowHeaders;
     }
 
-    /**
-     * @return RA
-     */
     public function getExposeHeaders(): RA
     {
         return $this->exposeHeaders;
     }
 
-    /**
-     * @return RA
-     */
     public function getTargetControllers(): RA
     {
         return $this->targetControllers;

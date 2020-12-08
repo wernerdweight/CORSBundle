@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace WernerDweight\CORSBundle\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use WernerDweight\CORSBundle\Exception\PreflightRequestInterceptedException;
 
+/**
+ * @SuppressWarnings(PHPMD.LongClassName)
+ */
 final class PreflightRequestInterceptedEventSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @param GetResponseForExceptionEvent $event
-     */
-    public function interceptException(GetResponseForExceptionEvent $event): void
+    public function interceptException(ExceptionEvent $event): void
     {
-        $exception = $event->getException();
+        $exception = $event->getThrowable();
         if ($exception instanceof PreflightRequestInterceptedException) {
             $event->allowCustomResponseCode();
             $event->setResponse($exception->getResponse());

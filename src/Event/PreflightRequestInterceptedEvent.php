@@ -20,9 +20,6 @@ class PreflightRequestInterceptedEvent extends Event
 
     /**
      * PreflightRequestInterceptedEvent constructor.
-     *
-     * @param Request  $request
-     * @param Response $response
      */
     public function __construct(Request $request, Response $response)
     {
@@ -30,25 +27,17 @@ class PreflightRequestInterceptedEvent extends Event
         $this->response = $response;
     }
 
-    /**
-     * @return Request
-     */
     public function getRequest(): Request
     {
         return $this->request;
     }
 
-    /**
-     * @return Response
-     */
     public function getResponse(): Response
     {
         return $this->response;
     }
 
     /**
-     * @param Response $response
-     *
      * @return PreflightRequestInterceptedEvent
      */
     public function setResponse(Response $response): self

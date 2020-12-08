@@ -12,8 +12,6 @@ use WernerDweight\CORSBundle\Tests\Fixtures\RequestFixtures;
 class CORSResolverTest extends KernelTestCase
 {
     /**
-     * @param Request $request
-     *
      * @dataProvider provideResolveValues
      */
     public function testResolve(Request $request): void
@@ -27,7 +25,6 @@ class CORSResolverTest extends KernelTestCase
 
     /**
      * @param mixed[] $expected
-     * @param Request $request
      *
      * @dataProvider provideGetHeadersValues
      */

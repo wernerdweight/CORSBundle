@@ -48,9 +48,7 @@ class CORSResolver
     /**
      * CORSResolver constructor.
      *
-     * @param ConfigurationProvider $configurationProvider
-     * @param RoutingHeaderResolver $routingHeaderResolver
-     * @param EventDispatcher       $eventDispatcher
+     * @param EventDispatcher $eventDispatcher
      */
     public function __construct(
         ConfigurationProvider $configurationProvider,
@@ -62,9 +60,6 @@ class CORSResolver
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    /**
-     * @param Request $request
-     */
     public function resolve(Request $request): void
     {
         $response = new JsonResponse(self::RESPONSE_DATA, Response::HTTP_OK, $this->getHeaders($request));
@@ -73,12 +68,6 @@ class CORSResolver
         throw new PreflightRequestInterceptedException($event->getResponse());
     }
 
-    /**
-     * @param RA          $allowOrigin
-     * @param string|null $origin
-     *
-     * @return bool
-     */
     private function isOriginAllowed(RA $allowOrigin, ?string $origin): bool
     {
         return true === $allowOrigin->contains(self::ANY_ORIGIN) ||
@@ -86,8 +75,6 @@ class CORSResolver
     }
 
     /**
-     * @param Request $request
-     *
      * @return string[]
      */
     public function getHeaders(Request $request): array

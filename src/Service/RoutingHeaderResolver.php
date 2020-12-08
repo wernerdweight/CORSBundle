@@ -19,19 +19,12 @@ class RoutingHeaderResolver
 
     /**
      * RoutingHeaderResolver constructor.
-     *
-     * @param RouterInterface $router
      */
     public function __construct(RouterInterface $router)
     {
         $this->router = $router;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return RA|null
-     */
     public function resolveAllowedMethods(Request $request): ?RA
     {
         $routeName = $request->attributes->get(self::ROUTE_KEY);

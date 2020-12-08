@@ -18,14 +18,14 @@
     ],
     "require": {
         "php": ">=7.2.0",
-        "symfony/framework-bundle": "^4.0",
+        "symfony/framework-bundle": "^4.0|^5.0",
         "thecodingmachine/safe": "^1.0",
         "wernerdweight/ra": "^1.0"
     },
     "require-dev": {
-        "wernerdweight/cs": "^1.4",
+        "wernerdweight/cs": "^2.0",
         "thecodingmachine/phpstan-safe-rule": "^1.0",
-        "symfony/phpunit-bridge": "^4.3"
+        "symfony/phpunit-bridge": "^4.3|^5.0"
     },
     "suggest": {},
     "autoload": {
@@ -44,13 +44,12 @@
         "phpmd": "phpmd ./src/ text vendor/wernerdweight/cs/phpmd.xml",
         "ecs": "ecs check ./src/ ./tests/ --config ecs.yaml",
         "ecs-fix": "ecs check ./src/ ./tests/ --config ecs.yaml --fix",
-        "phpunit": "phpunit",
-        "victor": "victor"
+        "phpunit": "phpunit"
     },
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "^4.3"
+            "require": "^4.3|^5.0"
         }
     }
 }

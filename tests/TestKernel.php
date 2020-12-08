@@ -9,7 +9,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\Routing\RouteCollectionBuilder;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use WernerDweight\CORSBundle\CORSBundle;
 use WernerDweight\CORSBundle\Tests\Helpers\TestTargetedControllerInterface;
 
@@ -28,19 +28,22 @@ class TestKernel extends Kernel
         ];
     }
 
-    protected function configureRoutes(RouteCollectionBuilder $routes): void
+    protected function configureRoutes(RoutingConfigurator $routes): void
     {
         $routes->import(__DIR__ . '/Resources/config/routes.yaml');
     }
 
     protected function configureContainer(ContainerBuilder $builder, LoaderInterface $loader): void
     {
-        $loader->load(__DIR__ . '/../vendor/symfony/framework-bundle/Resources/config/test.xml');
+        $loader->load(__DIR__ . '/../vendor/symfony/framework-bundle/Resources/config/test.php');
         $loader->load(__DIR__ . '/../src/Resources/config/services.yaml');
 
         $builder->loadFromExtension('framework', [
             'secret' => 'not-so-secret',
             'test' => true,
+            'router' => [
+                'utf8' => true,
+            ],
         ]);
         $builder->loadFromExtension('cors', [
             'access_control' => [

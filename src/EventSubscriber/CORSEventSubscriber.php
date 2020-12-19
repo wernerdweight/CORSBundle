@@ -32,11 +32,14 @@ final class CORSEventSubscriber implements EventSubscriberInterface
         $this->targetControllerResolver = $targetControllerResolver;
     }
 
-    private function getControllerFromEvent(ControllerEvent $event): ServiceSubscriberInterface
+    private function getControllerFromEvent(ControllerEvent $event): ?ServiceSubscriberInterface
     {
         $controller = $event->getController();
         if (true === is_array($controller)) {
             $controller = $controller[0];
+        }
+        if (!$controller instanceof ServiceSubscriberInterface) {
+            return null;
         }
         return $controller;
     }
@@ -44,7 +47,7 @@ final class CORSEventSubscriber implements EventSubscriberInterface
     public function resolveRequest(ControllerEvent $event): void
     {
         $controller = $this->getControllerFromEvent($event);
-        if (true === $this->targetControllerResolver->isTargeted($controller)) {
+        if (null !== $controller && true === $this->targetControllerResolver->isTargeted($controller)) {
             $request = $event->getRequest();
             if (Request::METHOD_OPTIONS !== $request->getMethod()) {
                 // only intercept OPTIONS calls, only enhance other calls

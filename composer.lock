@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "908823e7b570676fa056ad2a82b02c11",
+    "content-hash": "82dc70d6a3da675ed164cc9f68f5d5db",
     "packages": [
         {
             "name": "psr/cache",
@@ -2173,21 +2173,21 @@
         },
         {
             "name": "wernerdweight/ra",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "target-dir": "WernerDweight/RA",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wernerdweight/RA.git",
-                "reference": "b83d76eb8598b7fe48a59d4b981b320817429104"
+                "reference": "85344f7a415a41ed480195f90cdd9ce363ef8cf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wernerdweight/RA/zipball/b83d76eb8598b7fe48a59d4b981b320817429104",
-                "reference": "b83d76eb8598b7fe48a59d4b981b320817429104",
+                "url": "https://api.github.com/repos/wernerdweight/RA/zipball/85344f7a415a41ed480195f90cdd9ce363ef8cf1",
+                "reference": "85344f7a415a41ed480195f90cdd9ce363ef8cf1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.0",
+                "php": "^8.1",
                 "thecodingmachine/safe": "^1.0"
             },
             "require-dev": {
@@ -2219,9 +2219,9 @@
             ],
             "support": {
                 "issues": "https://github.com/wernerdweight/RA/issues",
-                "source": "https://github.com/wernerdweight/RA/tree/1.2.0"
+                "source": "https://github.com/wernerdweight/RA/tree/2.0.0"
             },
-            "time": "2020-01-16T16:13:41+00:00"
+            "time": "2022-11-08T12:46:41+00:00"
         }
     ],
     "packages-dev": [
@@ -3089,27 +3089,27 @@
         },
         {
             "name": "nette/utils",
-            "version": "v3.2.0",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "d0427c1811462dbb6c503143eabe5478b26685f7"
+                "reference": "02a54c4c872b99e4ec05c4aec54b5a06eb0f6368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/d0427c1811462dbb6c503143eabe5478b26685f7",
-                "reference": "d0427c1811462dbb6c503143eabe5478b26685f7",
+                "url": "https://api.github.com/repos/nette/utils/zipball/02a54c4c872b99e4ec05c4aec54b5a06eb0f6368",
+                "reference": "02a54c4c872b99e4ec05c4aec54b5a06eb0f6368",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2 <8.1"
+                "php": ">=7.2 <8.3"
             },
             "conflict": {
                 "nette/di": "<3.0.6"
             },
             "require-dev": {
                 "nette/tester": "~2.0",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.0",
                 "tracy/tracy": "^2.3"
             },
             "suggest": {
@@ -3168,9 +3168,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v3.2.0"
+                "source": "https://github.com/nette/utils/tree/v3.2.8"
             },
-            "time": "2020-11-25T23:47:50+00:00"
+            "time": "2022-09-12T23:36:20+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3694,33 +3694,33 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.2",
+            "version": "v1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "245710e971a030f42e08f4912863805570f23d39"
+                "reference": "be8cac52a0827776ff9ccda8c381ac5b71aeb359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/245710e971a030f42e08f4912863805570f23d39",
-                "reference": "245710e971a030f42e08f4912863805570f23d39",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/be8cac52a0827776ff9ccda8c381ac5b71aeb359",
+                "reference": "be8cac52a0827776ff9ccda8c381ac5b71aeb359",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.2",
-                "php": "^7.2 || ~8.0, <8.1",
+                "php": "^7.2 || 8.0.* || 8.1.* || 8.2.*",
                 "phpdocumentor/reflection-docblock": "^5.2",
                 "sebastian/comparator": "^3.0 || ^4.0",
                 "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^6.0",
+                "phpspec/phpspec": "^6.0 || ^7.0",
                 "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -3755,9 +3755,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.12.2"
+                "source": "https://github.com/phpspec/prophecy/tree/v1.16.0"
             },
-            "time": "2020-12-19T10:15:11+00:00"
+            "time": "2022-11-29T15:06:56+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",

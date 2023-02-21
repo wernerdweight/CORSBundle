@@ -38,12 +38,18 @@ class TestKernel extends Kernel
         $loader->load(__DIR__ . '/../vendor/symfony/framework-bundle/Resources/config/test.php');
         $loader->load(__DIR__ . '/../src/Resources/config/services.yaml');
 
+        $builder->setParameter('session.storage.options', []);
+
         $builder->loadFromExtension('framework', [
             'secret' => 'not-so-secret',
             'test' => true,
             'router' => [
                 'utf8' => true,
             ],
+            'session' => [
+                'enabled' => false,
+            ],
+            'http_method_override' => false,
         ]);
         $builder->loadFromExtension('cors', [
             'access_control' => [

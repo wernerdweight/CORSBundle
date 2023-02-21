@@ -15,34 +15,69 @@ use WernerDweight\RA\RA;
 
 class CORSResolver
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private const RESPONSE_DATA = 'OK';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_ALLOW_CREDENTIALS = 'Access-Control-Allow-Credentials';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_ALLOW_ORIGIN = 'Access-Control-Allow-Origin';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_ALLOW_METHODS = 'Access-Control-Allow-Methods';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_ALLOW_HEADERS = 'Access-Control-Allow-Headers';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_EXPOSE_HEADERS = 'Access-Control-Expose-Headers';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_ORIGIN = 'Origin';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const TRUE_VALUE = 'true';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const HEADER_VALUE_SEPARATOR = ', ';
-    /** @var string */
+
+    /**
+     * @var string
+     */
     private const ANY_ORIGIN = '*';
 
-    /** @var ConfigurationProvider */
+    /**
+     * @var ConfigurationProvider
+     */
     private $configurationProvider;
 
-    /** @var RoutingHeaderResolver */
+    /**
+     * @var RoutingHeaderResolver
+     */
     private $routingHeaderResolver;
 
-    /** @var EventDispatcher */
+    /**
+     * @var EventDispatcher
+     */
     private $eventDispatcher;
 
     /**
@@ -66,12 +101,6 @@ class CORSResolver
         /** @var PreflightRequestInterceptedEvent $event */
         $event = $this->eventDispatcher->dispatch(new PreflightRequestInterceptedEvent($request, $response));
         throw new PreflightRequestInterceptedException($event->getResponse());
-    }
-
-    private function isOriginAllowed(RA $allowOrigin, ?string $origin): bool
-    {
-        return true === $allowOrigin->contains(self::ANY_ORIGIN) ||
-            (null !== $origin && true === $allowOrigin->contains($origin));
     }
 
     /**
@@ -111,5 +140,11 @@ class CORSResolver
         /** @var GetResponseHeadersEvent $event */
         $event = $this->eventDispatcher->dispatch(new GetResponseHeadersEvent($request, $headers));
         return $event->getHeaders();
+    }
+
+    private function isOriginAllowed(RA $allowOrigin, ?string $origin): bool
+    {
+        return true === $allowOrigin->contains(self::ANY_ORIGIN) ||
+            (null !== $origin && true === $allowOrigin->contains($origin));
     }
 }

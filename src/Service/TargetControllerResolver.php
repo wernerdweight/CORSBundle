@@ -4,34 +4,29 @@ declare(strict_types=1);
 namespace WernerDweight\CORSBundle\Service;
 
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
-use WernerDweight\CORSBundle\Controller\CORSControllerInterface;
+use WernerDweight\CORSBundle\Controller\Contracts\CORSControllerInterface;
 use WernerDweight\RA\RA;
 
 class TargetControllerResolver
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private const ANY_CONTROLLER = '*';
 
-    /** @var ConfigurationProvider */
+    /**
+     * @var ConfigurationProvider
+     */
     private $configurationProvider;
 
-    /** @var RA|null */
+    /**
+     * @var RA|null
+     */
     private $configuration;
 
-    /**
-     * TargetControllerResolver constructor.
-     */
     public function __construct(ConfigurationProvider $configurationProvider)
     {
         $this->configurationProvider = $configurationProvider;
-    }
-
-    private function getConfiguration(): RA
-    {
-        if (null === $this->configuration) {
-            $this->configuration = $this->configurationProvider->getTargetControllers();
-        }
-        return $this->configuration;
     }
 
     public function isTargeted(ServiceSubscriberInterface $controller): bool
@@ -58,5 +53,13 @@ class TargetControllerResolver
         }
 
         return false;
+    }
+
+    private function getConfiguration(): RA
+    {
+        if (null === $this->configuration) {
+            $this->configuration = $this->configurationProvider->getTargetControllers();
+        }
+        return $this->configuration;
     }
 }

@@ -9,17 +9,21 @@ use WernerDweight\RA\RA;
 
 class RoutingHeaderResolver
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private const ROUTE_KEY = '_route';
-    /** @var string */
-    private const ANY_METHOD = '*';
-
-    /** @var RouterInterface */
-    private $router;
 
     /**
-     * RoutingHeaderResolver constructor.
+     * @var string
      */
+    private const ANY_METHOD = '*';
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
     public function __construct(RouterInterface $router)
     {
         $this->router = $router;
@@ -27,12 +31,14 @@ class RoutingHeaderResolver
 
     public function resolveAllowedMethods(Request $request): ?RA
     {
+        /** @var string|null $routeName */
         $routeName = $request->attributes->get(self::ROUTE_KEY);
         if (null === $routeName) {
             return null;
         }
 
-        $route = $this->router->getRouteCollection()->get($routeName);
+        $route = $this->router->getRouteCollection()
+            ->get($routeName);
         if (null === $route) {
             return null;
         }

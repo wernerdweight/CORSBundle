@@ -17,15 +17,16 @@
         }
     ],
     "require": {
-        "php": ">=7.3.0",
-        "symfony/framework-bundle": "^4.0|^5.0",
-        "thecodingmachine/safe": "^1.0",
-        "wernerdweight/ra": "^1.0|^2.0"
+        "php": ">=8.1",
+        "symfony/framework-bundle": "^4.0|^5.0|^6.0",
+        "thecodingmachine/safe": "^2.4",
+        "wernerdweight/ra": "^2.0"
     },
     "require-dev": {
-        "wernerdweight/cs": "^2.0",
-        "thecodingmachine/phpstan-safe-rule": "^1.0",
-        "symfony/phpunit-bridge": "^4.3|^5.0"
+        "wernerdweight/cs": "^3.0",
+        "thecodingmachine/phpstan-safe-rule": "^1.2",
+        "symfony/phpunit-bridge": "^4.3|^5.0|^6.0",
+        "symfony/yaml": "^6.2"
     },
     "suggest": {},
     "autoload": {
@@ -39,17 +40,21 @@
         }
     },
     "scripts": {
-        "fix": "ecs check ./src/ ./tests/ --config ecs.yaml --fix",
+        "fix": "ecs check ./src/ ./tests/ --config ecs.php --fix",
         "phpstan": "phpstan analyse ./src/ ./tests/ --level max",
         "phpmd": "phpmd ./src/ text vendor/wernerdweight/cs/phpmd.xml",
-        "ecs": "ecs check ./src/ ./tests/ --config ecs.yaml",
-        "ecs-fix": "ecs check ./src/ ./tests/ --config ecs.yaml --fix",
+        "ecs": "ecs check ./src/ ./tests/ --config ecs.php",
         "phpunit": "phpunit"
     },
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "^4.3|^5.0"
+            "require": "^4.3|^5.0|^6.0"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

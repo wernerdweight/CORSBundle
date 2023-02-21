@@ -7,19 +7,29 @@ use WernerDweight\RA\RA;
 
 class ConfigurationProvider
 {
-    /** @var bool */
+    /**
+     * @var bool
+     */
     private $allowCredentials;
 
-    /** @var RA */
+    /**
+     * @var RA
+     */
     private $allowOrigin;
 
-    /** @var RA */
+    /**
+     * @var RA
+     */
     private $allowHeaders;
 
-    /** @var RA */
+    /**
+     * @var RA
+     */
     private $exposeHeaders;
 
-    /** @var RA */
+    /**
+     * @var RA
+     */
     private $targetControllers;
 
     /**

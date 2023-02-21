@@ -17,8 +17,9 @@ class CORSResolverTest extends KernelTestCase
     public function testResolve(Request $request): void
     {
         self::bootKernel();
+        $container = static::getContainer();
         /** @var CORSResolver $resolver */
-        $resolver = self::$container->get(CORSResolver::class);
+        $resolver = $container->get(CORSResolver::class);
         $this->expectException(PreflightRequestInterceptedException::class);
         $resolver->resolve($request);
     }
@@ -33,8 +34,9 @@ class CORSResolverTest extends KernelTestCase
         Request $request
     ): void {
         self::bootKernel();
+        $container = static::getContainer();
         /** @var CORSResolver $resolver */
-        $resolver = self::$container->get(CORSResolver::class);
+        $resolver = $container->get(CORSResolver::class);
         $value = $resolver->getHeaders($request);
         $this->assertEquals($expected, $value);
     }
@@ -42,7 +44,7 @@ class CORSResolverTest extends KernelTestCase
     /**
      * @return mixed[]
      */
-    public function provideResolveValues(): array
+    public static function provideResolveValues(): array
     {
         return [
             [
@@ -58,7 +60,7 @@ class CORSResolverTest extends KernelTestCase
     /**
      * @return mixed[]
      */
-    public function provideGetHeadersValues(): array
+    public static function provideGetHeadersValues(): array
     {
         return [
             [

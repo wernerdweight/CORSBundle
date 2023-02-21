@@ -14,34 +14,25 @@ use WernerDweight\CORSBundle\Service\TargetControllerResolver;
 
 final class CORSEventSubscriber implements EventSubscriberInterface
 {
-    /** @var bool */
+    /**
+     * @var bool
+     */
     private $shouldBeEnhanced = false;
 
-    /** @var CORSResolver */
+    /**
+     * @var CORSResolver
+     */
     private $resolver;
 
-    /** @var TargetControllerResolver */
+    /**
+     * @var TargetControllerResolver
+     */
     private $targetControllerResolver;
 
-    /**
-     * CORSEventSubscriber constructor.
-     */
     public function __construct(CORSResolver $resolver, TargetControllerResolver $targetControllerResolver)
     {
         $this->resolver = $resolver;
         $this->targetControllerResolver = $targetControllerResolver;
-    }
-
-    private function getControllerFromEvent(ControllerEvent $event): ?ServiceSubscriberInterface
-    {
-        $controller = $event->getController();
-        if (true === is_array($controller)) {
-            $controller = $controller[0];
-        }
-        if (!$controller instanceof ServiceSubscriberInterface) {
-            return null;
-        }
-        return $controller;
     }
 
     public function resolveRequest(ControllerEvent $event): void
@@ -65,9 +56,10 @@ final class CORSEventSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $event->getResponse()->headers->add(
-            $this->resolver->getHeaders($event->getRequest())
-        );
+        $event->getResponse()
+            ->headers->add(
+                $this->resolver->getHeaders($event->getRequest())
+            );
     }
 
     /**
@@ -79,5 +71,17 @@ final class CORSEventSubscriber implements EventSubscriberInterface
             KernelEvents::CONTROLLER => 'resolveRequest',
             KernelEvents::RESPONSE => 'enhanceResponse',
         ];
+    }
+
+    private function getControllerFromEvent(ControllerEvent $event): ?ServiceSubscriberInterface
+    {
+        $controller = $event->getController();
+        if (true === is_array($controller)) {
+            $controller = $controller[0];
+        }
+        if (! $controller instanceof ServiceSubscriberInterface) {
+            return null;
+        }
+        return $controller;
     }
 }

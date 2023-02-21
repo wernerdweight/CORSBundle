@@ -19,8 +19,9 @@ class RoutingHeaderResolverTest extends KernelTestCase
         Request $request
     ): void {
         self::bootKernel();
+        $container = static::getContainer();
         /** @var RoutingHeaderResolver $resolver */
-        $resolver = self::$container->get(RoutingHeaderResolver::class);
+        $resolver = $container->get(RoutingHeaderResolver::class);
         $value = $resolver->resolveAllowedMethods($request);
         $this->assertEquals($expected, $value);
     }
@@ -28,14 +29,22 @@ class RoutingHeaderResolverTest extends KernelTestCase
     /**
      * @return mixed[]
      */
-    public function provideValues(): array
+    public static function provideValues(): array
     {
         return [
             [null, RequestFixtures::createEmptyRequest()],
-            [new RA([1 => 'GET']), RequestFixtures::createValidGetRequest()],
-            [new RA([1 => 'POST']), RequestFixtures::createValidPostRequest()],
-            [new RA([1 => 'POST']), RequestFixtures::createInvalidGetRequest()],
-            [new RA([1 => 'GET']), RequestFixtures::createInvalidPostRequest()],
+            [new RA([
+                1 => 'GET',
+            ]), RequestFixtures::createValidGetRequest()],
+            [new RA([
+                1 => 'POST',
+            ]), RequestFixtures::createValidPostRequest()],
+            [new RA([
+                1 => 'POST',
+            ]), RequestFixtures::createInvalidGetRequest()],
+            [new RA([
+                1 => 'GET',
+            ]), RequestFixtures::createInvalidPostRequest()],
         ];
     }
 }

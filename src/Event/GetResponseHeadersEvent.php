@@ -8,13 +8,19 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class GetResponseHeadersEvent extends Event
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public const NAME = 'wds.cors_bundle.get_response_headers';
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private $headers = [];
 
-    /** @var Request */
+    /**
+     * @var Request
+     */
     private $request;
 
     /**
@@ -43,12 +49,9 @@ class GetResponseHeadersEvent extends Event
 
     /**
      * @param string[] $headers
-     *
-     * @return GetResponseHeadersEvent
      */
-    public function setHeaders(array $headers): self
+    public function setHeaders(array $headers): void
     {
         $this->headers = $headers;
-        return $this;
     }
 }

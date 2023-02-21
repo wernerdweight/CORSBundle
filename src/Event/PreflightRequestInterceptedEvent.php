@@ -9,18 +9,21 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class PreflightRequestInterceptedEvent extends Event
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public const NAME = 'wds.cors_bundle.preflight_request_intercepted';
 
-    /** @var Request */
+    /**
+     * @var Request
+     */
     private $request;
 
-    /** @var Response */
+    /**
+     * @var Response
+     */
     private $response;
 
-    /**
-     * PreflightRequestInterceptedEvent constructor.
-     */
     public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
@@ -37,12 +40,8 @@ class PreflightRequestInterceptedEvent extends Event
         return $this->response;
     }
 
-    /**
-     * @return PreflightRequestInterceptedEvent
-     */
-    public function setResponse(Response $response): self
+    public function setResponse(Response $response): void
     {
         $this->response = $response;
-        return $this;
     }
 }

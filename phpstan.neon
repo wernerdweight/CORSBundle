@@ -6,3 +6,15 @@ parameters:
     ignoreErrors:
         # Symfony configuration builder's return types are a bit messy
         - '#Cannot call method arrayNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+        -
+            message: '#Anonymous variable in a#'
+            path: 'src/DependencyInjection/Configuration.php'
+        -
+            message: '#Do not use chained method calls. Put each on separated lines#'
+            path: 'src/DependencyInjection/Configuration.php'
+        -
+            message: '#Method "getAllowCredentials\(\)" returns bool type, so the name should start with is\/has\/was#'
+            path: 'src/Service/ConfigurationProvider.php'
+        -
+            message: '#Make callable type explicit#'
+            path: 'src/EventSubscriber/CORSEventSubscriber.php'

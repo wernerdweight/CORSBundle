@@ -18,8 +18,9 @@ class TargetControllerResolverTest extends KernelTestCase
         ServiceSubscriberInterface $controller
     ): void {
         self::bootKernel();
+        $container = static::getContainer();
         /** @var TargetControllerResolver $resolver */
-        $resolver = self::$container->get(TargetControllerResolver::class);
+        $resolver = $container->get(TargetControllerResolver::class);
         $value = $resolver->isTargeted($controller);
         $this->assertEquals($expected, $value);
     }
@@ -27,7 +28,7 @@ class TargetControllerResolverTest extends KernelTestCase
     /**
      * @return mixed[]
      */
-    public function provideValues(): array
+    public static function provideValues(): array
     {
         return [
             [true, ControllerFixtures::createCORSController()],

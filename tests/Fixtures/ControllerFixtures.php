@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace WernerDweight\CORSBundle\Tests\Fixtures;
 
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
-use WernerDweight\CORSBundle\Controller\CORSControllerInterface;
+use WernerDweight\CORSBundle\Controller\Contracts\CORSControllerInterface;
 use WernerDweight\CORSBundle\Tests\Helpers\TestTargetedControllerInterface;
 
 class ControllerFixtures

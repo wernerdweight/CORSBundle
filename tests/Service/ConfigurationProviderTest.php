@@ -52,7 +52,7 @@ class ConfigurationProviderTest extends TestCase
     /**
      * @return mixed[]
      */
-    public function provideValues(): array
+    public static function provideValues(): array
     {
         return [
             [

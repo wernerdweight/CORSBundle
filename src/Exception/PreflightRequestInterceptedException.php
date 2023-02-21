@@ -7,12 +7,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PreflightRequestInterceptedException extends \RuntimeException
 {
-    /** @var Response */
+    /**
+     * @var Response
+     */
     private $response;
 
-    /**
-     * PreflightRequestInterceptedException constructor.
-     */
     public function __construct(Response $response, string $message = '', int $code = 0, ?\Throwable $previous = null)
     {
         $this->response = $response;

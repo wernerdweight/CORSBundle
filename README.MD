@@ -3,7 +3,7 @@ CORSBundle
 
 Symfony bundle that handles cross-origin resource sharing headers.
 
-[![Build Status](https://travis-ci.org/wernerdweight/CORSBundle.svg?branch=master)](https://travis-ci.org/wernerdweight/CORSBundle)
+[![Build Status](https://app.travis-ci.com/wernerdweight/CORSBundle.svg?branch=master)](https://app.travis-ci.com/wernerdweight/CORSBundle)
 [![Latest Stable Version](https://poser.pugx.org/wernerdweight/cors-bundle/v/stable)](https://packagist.org/packages/wernerdweight/cors-bundle)
 [![Total Downloads](https://poser.pugx.org/wernerdweight/cors-bundle/downloads)](https://packagist.org/packages/wernerdweight/cors-bundle)
 [![License](https://poser.pugx.org/wernerdweight/cors-bundle/license)](https://packagist.org/packages/wernerdweight/cors-bundle)
